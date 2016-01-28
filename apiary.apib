@@ -70,10 +70,31 @@ Any response that does not provide a ```200 OK``` response code should be treate
             
     + Attributes (Heartbeat)
 
+# Group Vendors
+
+## Vendor Collection [/vendors]
+
+### GET
+
++ Response 200 (application/json; charset=utf-8)
+  + Attributes (Product)
+
 # Data Structures
 
 ## Heartbeat (object)
 Represents a heartbeat response.
 
 ### Properties
+<<<<<<< Updated upstream
 + `vitalCheck`: true (boolean, required) - Vital check to ensure something is online.
+=======
++ `vitalCheck`: true (boolean, required) - Vital check to ensure something is online.
+
+## Product (object)
+Represents a product
+
+### Properties
++ `id` (number, required) - The unique ID for the product.
++ `name` (string, required) - The name of the product.
++ `url` (string, required) - The url for the product.
+>>>>>>> Stashed changes
