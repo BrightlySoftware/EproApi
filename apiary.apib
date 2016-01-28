@@ -7,8 +7,8 @@ USEMODELPOSTFIX: FALSE
 USECONTROLLERPOSTFIX: FALSE
 USEENUMPOSTFIX: FALSE
 USECONSTRUCTORSFORCONFIG: TRUE
-CSHARPDEFAULTNAMESPACE: DSI.SDK.<ApiName>
-JAVADEFAULTNAMESPACE: io.dudesolutions.<ApiName>
+CSHARPDEFAULTNAMESPACE: DSI.SDK.Procurement
+JAVADEFAULTNAMESPACE: io.dudesolutions.Procurement
 BRANDLABEL: Dude Solutions, Inc.
 USERAGENT: Dude SDK
 
@@ -38,7 +38,7 @@ In addition to standard response codes the response object returned from the ser
             "dudeReferenceId": "3523845A-4729-4CCB-9E16-01DEADF6C2DF",
             "stackTrace": "Null, Typically"
         }
-        
+
 ## Data Restriction
 Depending on the access level granted to the calling client certain data elements throughout this API will be removed and not returned.
 
@@ -63,11 +63,11 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 + Response 200 (application/json)
     + Headers
-    
+
             X-Dude-Api-Limit: Unlimited or Number
             X-Dude-Api-Remaining: Unlimited or Number
             X-Dude-Api-Server: Api Server ID
-            
+
     + Attributes (Heartbeat)
 
 # Data Structures
