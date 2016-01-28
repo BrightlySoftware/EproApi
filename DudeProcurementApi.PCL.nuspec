@@ -24,6 +24,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="code\DudeSecurityApi.PCL\bin\$configuration$\DudeProcurementApi.PCL.dll" target="lib\net45" />
+    <file src="code\DudeProcurementApi.PCL\bin\$configuration$\DudeProcurementApi.PCL.dll" target="lib\net45" />
   </files>
 </package>
