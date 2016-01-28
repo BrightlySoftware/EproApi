@@ -79,9 +79,16 @@ Any response that does not provide a ```200 OK``` response code should be treate
 ### Get Vendors [GET]
 
 + Response 200 (application/json; charset=utf-8)
-  + Attributes (array[Product])
+  + Attributes (Base Collection Response)
+      + `data` (array[Product], required)
 
 # Data Structures
+
+## Base Collection Response (object)
++ `page`: 1 (number, required) - {INT} The current page provided in the response data.
++ `pageSize`: 1000 (number, required) - {INT} The page size returned in the response data.
++ `dataSize`: 1000 (number, required) - {INT} The total records returned in the response.
++ `total`: 2000 (number, required) - {INT} The total number of records available in the collection.
 
 ## Heartbeat (object)
 Represents a heartbeat response.
