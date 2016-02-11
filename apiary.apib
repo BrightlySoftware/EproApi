@@ -91,6 +91,22 @@ Any response that does not provide a ```200 OK``` response code should be treate
   + Attributes (Base Collection Response)
       + `data` (array[Product], required)
 
+# Group SSO
+
+## SSO [/sso/{ssoTarget}{?accessToken,w,wd,wdesc,rs}]
+
++ Parameters
+    + accessToken (string, required) - The authenticated user token
+    + w: 1234 (number, required) - {INT} ID of the work order in the form of an integer
+    + wd: 100 (number, required) {INT} - Display ID of the work order in the form of an integer.
+    + wdesc Hello (string, required) - A description of the work order.
+    + rs: https://www.grainger.com/product/5LE23 (string, optional) - The relay state (expected url redirect)
+
+### Get SSO [GET]
+
++ Response 200 (text/html)
+    This returns html containing the SAML response as results
+
 # Data Structures
 
 ## System Information (object)
