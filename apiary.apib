@@ -84,18 +84,6 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
     + Attributes (Heartbeat)
 
-# Group Vendors
-Check vendor endpoints
-
-## Vendor Collection [/vendors]
-The vendor collection allows for account vendor information to be found and returned.
-
-### GET
-
-+ Response 200 (application/json; charset=utf-8)
-  + Attributes (Base Collection Response)
-      + `data` (array[Product], required)
-
 # Group SSO
 
 ## SSO Target [/sso/{ssoTarget}{?accessToken,w,wd,wdesc,rs}]
@@ -113,6 +101,18 @@ This provides HTML for a client browser to post to a partner site
 
 + Response 200 (text/html)
     This returns html containing the SAML response as results
+
+# Group Vendors
+Check vendor endpoints
+
+## Vendor Collection [/vendors]
+The vendor collection allows for account vendor information to be found and returned.
+
+### GET
+
++ Response 200 (application/json; charset=utf-8)
+  + Attributes (Base Collection Response)
+      + `data` (array[Product], required)
 
 # Data Structures
 
