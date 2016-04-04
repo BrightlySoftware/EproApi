@@ -98,7 +98,8 @@ The vendor collection allows for account vendor information to be found and retu
 
 # Group SSO
 
-## SSO [/sso/{ssoTarget}{?accessToken,w,wd,wdesc,rs}]
+## SSO Target [/sso/{ssoTarget}{?accessToken,w,wd,wdesc,rs}]
+This provides HTML for a client browser to post to a partner site
 
 + Parameters
     + ssoTarget: grainger (string, required) - The single sign on target/vendor
@@ -116,6 +117,9 @@ The vendor collection allows for account vendor information to be found and retu
 # Data Structures
 
 ## System Information (object)
+Represents the System Information response
+
+### Properties
 + `application`: `Dude Epro Api` (string, required) - The name of the application.
 + `version` : `1.0.0.0` (string, required) - The assembly version.
 + `apiVersion` : `1.0.0.0` (string, required) - The API version.
@@ -123,18 +127,24 @@ The vendor collection allows for account vendor information to be found and retu
 + `links` (array[System Links], required) - The API routes.
 
 ## System Links (object)
+Represents the API routes
+
+### Properties
 + `endpoint` : `WorkOrder` (string, required) - The name of the endpoint.
 + `action` : `Get` (string, required) - The REST action.
 + `route` : `/accounts/{accountId}/workorders` (string, required) - The route to the endpoint.
 
 ## Base Collection Response (object)
+Represents a paged object
+
+### Properties
 + `page`: 1 (number, required) - {INT} The current page provided in the response data.
 + `pageSize`: 1000 (number, required) - {INT} The page size returned in the response data.
 + `dataSize`: 1000 (number, required) - {INT} The total records returned in the response.
 + `total`: 2000 (number, required) - {INT} The total number of records available in the collection.
 
 ## Heartbeat (object)
-Represents a heartbeat response.
+Represents a heartbeat response
 
 ### Properties
 + `cachevitalcheck`: true (boolean, required) - true is cache is online.
