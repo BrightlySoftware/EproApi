@@ -56,7 +56,7 @@ None at this time
 In Progress
 
 # Group System Information
-Check API System Information
+Check API System Information.
 
 ## S.I. Check [/]
 Retrieve api version, vitals, links, etc.
@@ -67,7 +67,7 @@ Retrieve api version, vitals, links, etc.
     + Attributes (System Information)
 
 # Group Heartbeat
-Check health of dependent services
+Check health of dependent services.
 
 ## Heartbeat Check [/heartbeat]
 The heartbeat is exposed and provided to check for availability of the service.
@@ -87,7 +87,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
 # Group SSO
 
 ## SSO Target [/sso/{ssoTarget}{?accessToken,w,wd,wdesc,rs}]
-This provides HTML for a client browser to post to a partner site
+This provides HTML for a client browser to post to a partner site.
 
 + Parameters
     + ssoTarget: grainger (string, required) - The single sign on target/vendor
@@ -103,7 +103,7 @@ This provides HTML for a client browser to post to a partner site
     This returns html containing the SAML response as results
 
 # Group Vendors
-Check vendor endpoints
+Check vendor endpoints.
 
 ## Vendor Collection [/vendors]
 The vendor collection allows for account vendor information to be found and returned.
@@ -117,7 +117,7 @@ The vendor collection allows for account vendor information to be found and retu
 # Data Structures
 
 ## System Information (object)
-Represents the System Information response
+Represents the System Information response.
 
 ### Properties
 + `application`: `Dude Epro Api` (string, required) - The name of the application.
@@ -127,7 +127,7 @@ Represents the System Information response
 + `links` (array[System Links], required) - The API routes.
 
 ## System Links (object)
-Represents the API routes
+Represents the API routes.
 
 ### Properties
 + `endpoint` : `Vendor` (string, required) - The name of the endpoint.
@@ -135,7 +135,7 @@ Represents the API routes
 + `route` : `/vendors` (string, required) - The route to the endpoint.
 
 ## Base Collection Response (object)
-Represents a paged object
+Represents a paged object.
 
 ### Properties
 + `page`: 1 (number, required) - {INT} The current page provided in the response data.
@@ -144,13 +144,13 @@ Represents a paged object
 + `total`: 2000 (number, required) - {INT} The total number of records available in the collection.
 
 ## Heartbeat (object)
-Represents a heartbeat response
+Represents a heartbeat response.
 
 ### Properties
 + `cachevitalcheck`: true (boolean, required) - true is cache is online.
 
 ## Product (object)
-Represents a product
+Represents a product.
 
 ### Properties
 + `id`:  1 (number, required) - {INT} The unique ID for the product.
