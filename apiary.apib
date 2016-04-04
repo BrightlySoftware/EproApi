@@ -56,8 +56,10 @@ None at this time
 In Progress
 
 # Group System Information
+Check API System Information
 
 ## System Information [/]
+Retrieve api version, vitals, links, etc.
 
 ### GET
 
@@ -65,6 +67,7 @@ In Progress
     + Attributes (System Information)
 
 # Group Heartbeat
+Check health of dependent services
 
 ## Heartbeat [/heartbeat]
 The heartbeat is exposed and provided to check for availability of the service.
@@ -82,10 +85,12 @@ Any response that does not provide a ```200 OK``` response code should be treate
     + Attributes (Heartbeat)
 
 # Group Vendors
+Check vendor endpoints
 
 ## Vendor Collection [/vendors]
+The vendor collection allows for account vendor information to be found and returned.
 
-### Get Vendors [GET]
+### GET
 
 + Response 200 (application/json; charset=utf-8)
   + Attributes (Base Collection Response)
@@ -103,7 +108,7 @@ Any response that does not provide a ```200 OK``` response code should be treate
     + wdesc: Hello (string, required) - A description of the work order.
     + rs: https://www.grainger.com/product/5LE23 (string, optional) - The relay state/expected url redirect
 
-### Get SSO [GET]
+### GET [GET]
 
 + Response 200 (text/html)
     This returns html containing the SAML response as results
