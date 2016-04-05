@@ -134,6 +134,12 @@ Represents the API routes.
 + `action` : `Get` (string, required) - The REST action.
 + `route` : `/vendors` (string, required) - The route to the endpoint.
 
+## Heartbeat (object)
+Represents a heartbeat response.
+
+### Properties
++ `cachevitalcheck`: true (boolean, required) - true is cache is online.
+
 ## Base Collection Response (object)
 Represents a paged object.
 
@@ -142,12 +148,6 @@ Represents a paged object.
 + `pageSize`: 1000 (number, required) - {INT} The page size returned in the response data.
 + `dataSize`: 1000 (number, required) - {INT} The total records returned in the response.
 + `total`: 2000 (number, required) - {INT} The total number of records available in the collection.
-
-## Heartbeat (object)
-Represents a heartbeat response.
-
-### Properties
-+ `cachevitalcheck`: true (boolean, required) - true is cache is online.
 
 ## Product (object)
 Represents a product.
