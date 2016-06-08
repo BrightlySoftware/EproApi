@@ -1,14 +1,16 @@
 FORMAT: 1A
 HOST: https://v1.api.dudesolutions.io
 
+USECOMMONSDKLIBRARY: TRUE
 GENERATEASYNCCODE: TRUE
+GENERATEINTERFACES: TRUE
 USEMETHODPREFIX: TRUE
 USEMODELPOSTFIX: FALSE
 USECONTROLLERPOSTFIX: FALSE
 USEENUMPOSTFIX: FALSE
 USECONSTRUCTORSFORCONFIG: TRUE
-CSHARPDEFAULTNAMESPACE: DSI.SDK.<ApiName>
-JAVADEFAULTNAMESPACE: io.dudesolutions.<ApiName>
+CSHARPDEFAULTNAMESPACE: DSI.SDK.Procurement
+JAVADEFAULTNAMESPACE: io.dudesolutions.Procurement
 BRANDLABEL: Dude Solutions, Inc.
 USERAGENT: Dude SDK
 
@@ -19,7 +21,7 @@ USERAGENT: Dude SDK
 Good reference document: https://raw.githubusercontent.com/apiaryio/api-blueprint/master/examples/Polls%20API.md
 
 ## Authentication
-*<Api Name>* uses OAuth v2 Authentication. First you create a new (or acquire existing) OAuth v2 token using [DudeAuth](https://www.dudeauth.com/).
+*Procurement Api* uses OAuth v2 Authentication. First you create a new (or acquire existing) OAuth v2 token using [DudeAuth](https://www.dudeauth.com/).
 
 New to *OAuth*?  Check out the [OAuth Bible](http://oauthbible.com/) for good reference material.
 
@@ -38,12 +40,12 @@ In addition to standard response codes the response object returned from the ser
             "dudeReferenceId": "3523845A-4729-4CCB-9E16-01DEADF6C2DF",
             "stackTrace": "Null, Typically"
         }
-        
+
 ## Data Restriction
 Depending on the access level granted to the calling client certain data elements throughout this API will be removed and not returned.
 
 ## Dates & Times
-All dates and times are represented in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format.  In addition, *<ApiName>* will always provide [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).
+All dates and times are represented in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format.  In addition, *Procurement Api* will always provide [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).
 
 The API is capable of parsing most date and time formats, however we do require UTC dates and times be provided from all calling systems.  We highly recommend you utilize the ISO-8601 standard when communicating dates and time to the API as well.
 
@@ -53,9 +55,21 @@ None at this time
 ## Documentation Notes
 In Progress
 
-# Group Heartbeat
+# Group System Information
+Check API System Information.
 
-## Heartbeat [/heartbeat]
+## S.I. Check [/]
+Retrieve api version, vitals, links, etc.
+
+### GET
+
++ Response 200 (application/json)
+    + Attributes (System Information)
+
+# Group Heartbeat
+Check health of dependent services.
+
+## Heartbeat Check [/heartbeat]
 The heartbeat is exposed and provided to check for availability of the service.
 Any response that does not provide a ```200 OK``` response code should be treated as an error.
 
@@ -63,17 +77,82 @@ Any response that does not provide a ```200 OK``` response code should be treate
 
 + Response 200 (application/json)
     + Headers
-    
+
             X-Dude-Api-Limit: Unlimited or Number
             X-Dude-Api-Remaining: Unlimited or Number
             X-Dude-Api-Server: Api Server ID
-            
+
     + Attributes (Heartbeat)
 
+# Group SSO
+
+## SSO Target [/sso/{ssoTarget}{?accessToken,w,wd,wdesc,rs}]
+This provides HTML for a client browser to post to a partner site.
+
++ Parameters
+    + ssoTarget: grainger (string, required) - The single sign on target/vendor
+    + accessToken: token (string, required) - The authenticated user token
+    + w: 1234 (number, required) - {INT} ID of the work order in the form of an integer
+    + wd: 100 (number, required) {INT} - Display ID of the work order in the form of an integer.
+    + wdesc: Hello (string, required) - A description of the work order.
+    + rs: https://www.grainger.com/product/5LE23 (string, optional) - The relay state/expected url redirect
+
+### GET
+
++ Response 200 (text/html)
+    This returns html containing the SAML response as results
+
+# Group Vendors
+Check vendor endpoints.
+
+## Vendor Collection [/vendors]
+The vendor collection allows for account vendor information to be found and returned.
+
+### GET
+
++ Response 200 (application/json; charset=utf-8)
+  + Attributes (Base Collection Response)
+      + `data` (array[Product], required)
+
 # Data Structures
+
+## System Information (object)
+Represents the System Information response.
+
+### Properties
++ `application`: `Dude Epro Api` (string, required) - The name of the application.
++ `version` : `1.0.0.0` (string, required) - The assembly version.
++ `apiVersion` : `1.0.0.0` (string, required) - The API version.
++ `vitals` (Heartbeat, required) - The state of the system dependencies.
++ `links` (array[System Links], required) - The API routes.
+
+## System Links (object)
+Represents the API routes.
+
+### Properties
++ `endpoint` : `Vendor` (string, required) - The name of the endpoint.
++ `action` : `Get` (string, required) - The REST action.
++ `route` : `/vendors` (string, required) - The route to the endpoint.
 
 ## Heartbeat (object)
 Represents a heartbeat response.
 
 ### Properties
-+ `vitalCheck`: true (boolean, required) - Vital check to ensure something is online.
++ `cachevitalcheck`: true (boolean, required) - true is cache is online.
+
+## Base Collection Response (object)
+Represents a paged object.
+
+### Properties
++ `page`: 1 (number, required) - {INT} The current page provided in the response data.
++ `pageSize`: 1000 (number, required) - {INT} The page size returned in the response data.
++ `dataSize`: 1000 (number, required) - {INT} The total records returned in the response.
++ `total`: 2000 (number, required) - {INT} The total number of records available in the collection.
+
+## Product (object)
+Represents a product.
+
+### Properties
++ `id`:  1 (number, required) - {INT} The unique ID for the product.
++ `name`: Sample Product (string, required) - The name of the product.
++ `url`: http://sampleproduct.com (string, required) - The url for the product.
